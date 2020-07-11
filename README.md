@@ -1,6 +1,5 @@
 # GIFCapture
-SHADERed plugin that adds the ability to capture GIFs:
-
+SHADERed plugin that adds the ability to capture GIF
 ![Screenshot](./screen.gif)
 
 You can change output path, width and height + hide the SHADERed logo in the properties/options.
@@ -9,7 +8,7 @@ You can change output path, width and height + hide the SHADERed logo in the pro
 Clone the project:
 
 ```bash
-git clone https://github.com/dfranx/PluginShadertoy.git
+git clone https://github.com/dfranx/PluginGIFCapture.git
 git submodule init
 git submodule update
 ```
