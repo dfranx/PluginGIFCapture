@@ -22,4 +22,5 @@ make
 
 ## How to install
 Minimum requirements: SHADERed v1.3.5
+
 Copy the .dll/.so file to plugins/GIFCapture in SHADERed's installation directory.
