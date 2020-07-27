@@ -28,6 +28,12 @@ namespace gc
 		m_outputPath[0] = 0;
 		strcpy(m_outputPath, "capture.gif");
 
+
+		if (sedVersion == 1003005)
+			m_hostVersion = 1;
+		else
+			m_hostVersion = GetHostIPluginMaxVersion();
+
 		RegisterShortcut(this, "GIFCapture.StartStop");
 
 		return 0;
@@ -67,10 +73,16 @@ namespace gc
 
 		ImGui::Text("Output path: %s", m_outputPath);
 		ImGui::SameLine();
-		if (ImGui::Button("...")) {
-			char filePtr[512] = { 0 };
-			if (GetSaveFileDialog(filePtr, nullptr))
-				strcpy(m_outputPath, filePtr);			
+		if (ImGui::Button("..."))
+			if (m_hostVersion >= 2)
+				ImGuiFileDialogOpen("GIFCaputreLocationDlg", "Select save file", "GIF (*.gif){.gif},.*");
+
+
+		if (m_hostVersion >= 2 && ImGuiFileDialogIsDone("GIFCaputreLocationDlg")) {
+			if (ImGuiFileDialogGetResult())
+				ImGuiFileDialogGetPath(m_outputPath);
+
+			ImGuiFileDialogClose("GIFCaputreLocationDlg");
 		}
 
 		ImGui::Text("Width ");
